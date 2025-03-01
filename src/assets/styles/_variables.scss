@@ -1,0 +1,20 @@
+:root {
+  --primary-dark-color: #090909;
+  --secondary-dark-color: #0b0e12;
+  --third-dark-color: #101318;
+
+  // Button colours
+  --button-color-default: #eb0237;
+  --button-color-pressed: #a01131;
+  --button-color-disabled: #701328;
+
+  // border radiuses
+  --border-radius-default: 4px;
+
+  // status card set color
+  --status-card-ongoing-color: #43ad28;
+  --status-card-finished-color: var(--button-color-default);
+  --status-card-scheduled-color: #eb6402;
+
+  --default-white-color: #ffffff;
+}

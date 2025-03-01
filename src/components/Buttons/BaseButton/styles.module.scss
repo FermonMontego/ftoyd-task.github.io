@@ -1,0 +1,28 @@
+.base-button {
+  font-size: 18px;
+  font-weight: 600;
+
+  height: 56px;
+  max-width: 204px;
+  width: 100%;
+
+  background-color: var(--button-color-default);
+  color: var(--default-white-color);
+  border-radius: var(--border-radius-default);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+
+  &:active {
+    background-color: var(--button-color-pressed);
+  }
+
+  &:disabled {
+    background-color: var(--button-color-disabled);
+    cursor: default;
+  }
+}

@@ -1,0 +1,13 @@
+.base-notify-container {
+  background-color: #0f1318;
+  color: var(--default-white-color);
+
+  border-radius: var(--border-radius-default);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 24px;
+}

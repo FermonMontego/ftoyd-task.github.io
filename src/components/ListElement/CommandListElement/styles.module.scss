@@ -1,0 +1,23 @@
+.command-list-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 36px;
+
+  background-color: var(--secondary-dark-color);
+  border-radius: var(--border-radius-default);
+
+  &__wrapper-score {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+
+    p {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--default-white-color);
+    }
+  }
+}

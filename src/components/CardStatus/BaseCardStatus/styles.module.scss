@@ -1,0 +1,22 @@
+.base-card-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: var(--border-radius-default);
+  color: var(--default-white-color);
+  min-width: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__Scheduled {
+    background-color: var(--status-card-scheduled-color);
+  }
+  &__Ongoing {
+    background-color: var(--status-card-ongoing-color);
+  }
+  &__Finished {
+    background-color: var(--status-card-finished-color);
+  }
+}
