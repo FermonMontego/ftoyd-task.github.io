@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { FC, ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 
 import classes from './styles.module.scss'
 
