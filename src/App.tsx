@@ -86,7 +86,8 @@ function App() {
                 <CommandListElement
                   logotype={<BaseIcon source={CommandLogotype} />}
                   statusMatch={match.status}
-                  nameCommand="Team Spirit"
+                  awayTeam={match.awayTeam}
+                  homeTeam={match.homeTeam}
                   key={Date.now() * (Math.random() * 1000) + match.awayScore}
                   homeScore={match.homeScore}
                   awayScore={match.awayScore}

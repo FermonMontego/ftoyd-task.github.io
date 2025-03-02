@@ -8,7 +8,8 @@ import BaseCardStatus, {
 } from '../../CardStatus/BaseCardStatus/BaseCardStatus'
 
 type Props = {
-  nameCommand: string
+  awayTeam?: any
+  homeTeam?: any
   logotype: ReactElement
   statusMatch?: MatchStatusesType
   homeScore?: number
@@ -16,7 +17,8 @@ type Props = {
 }
 
 const CommandListElement: FC<Props> = ({
-  nameCommand,
+  awayTeam,
+  homeTeam,
   logotype,
   statusMatch,
   homeScore,
@@ -24,14 +26,14 @@ const CommandListElement: FC<Props> = ({
 }) => {
   return (
     <div className={clsx(styles['command-list-element'])}>
-      <CommandLogotype logotype={logotype} nameCommand={nameCommand} />
+      <CommandLogotype logotype={logotype} nameCommand={awayTeam.name} />
       <div className={styles['command-list-element__wrapper-score']}>
         <p>
-          {homeScore} {':'} {awayScore}
+          {awayScore} {':'} {homeScore}
         </p>
         <BaseCardStatus status={statusMatch} />
       </div>
-      <CommandLogotype logotype={logotype} nameCommand={nameCommand} />
+      <CommandLogotype logotype={logotype} nameCommand={homeTeam.name} />
     </div>
   )
 }
