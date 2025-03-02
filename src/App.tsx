@@ -8,13 +8,15 @@ import BaseContainer, {
 } from './components/Containers/BaseContainer/BaseContainer'
 import BaseNotifyContainer from './components/NotifyContainers/BaseNotifyContainer/BaseNotifyContainer'
 import CommandListElement from './components/ListElement/CommandListElement/CommandListElement'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { fetcher } from './api/fetcher'
 
 function App() {
   const [data, setData] = useState<any[]>()
   const [isLoadingData, setIsLoadindData] = useState<boolean>(false)
   const [loadingHasBeenError, setLoadingHasBeenError] = useState(false)
+
+  const [state, setState] = useState({ name: 1 })
 
   const loadData = useCallback(async () => {
     setIsLoadindData(true)
@@ -42,6 +44,25 @@ function App() {
       })
       .catch(() => setLoadingHasBeenError(true))
   }, [])
+
+  const dataMemoization = useMemo(() => {
+    return (data && data.map((match, index) => ({ ...match, id: index }))) || []
+  }, [data])
+
+  // Добавил мемоизацию таким образом, чтобы map каждый раз не прогонял этот список если ничего не менялось
+  const memoizationMatchesList = useMemo(() => {
+    return dataMemoization.map((match) => (
+      <CommandListElement
+        logotype={<BaseIcon source={CommandLogotype} />}
+        statusMatch={match.status}
+        awayTeam={match.awayTeam}
+        homeTeam={match.homeTeam}
+        homeScore={match.homeScore}
+        awayScore={match.awayScore}
+        key={match.id}
+      />
+    ))
+  }, [dataMemoization])
 
   return (
     <section className="section-matches">
@@ -76,24 +97,8 @@ function App() {
             </BaseButton>
           </div>
         </div>
-
         <div className="matches-list">
-          {!isLoadingData &&
-            data &&
-            data.map((match) => {
-              console.log(match, 'match')
-              return (
-                <CommandListElement
-                  logotype={<BaseIcon source={CommandLogotype} />}
-                  statusMatch={match.status}
-                  awayTeam={match.awayTeam}
-                  homeTeam={match.homeTeam}
-                  key={Date.now() * (Math.random() * 1000) + match.awayScore}
-                  homeScore={match.homeScore}
-                  awayScore={match.awayScore}
-                />
-              )
-            })}
+          {!isLoadingData && memoizationMatchesList}
 
           {isLoadingData && (
             <p className="matches-list__loading-data">Загрузка данных...</p>

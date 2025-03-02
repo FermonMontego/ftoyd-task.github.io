@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { FC, ReactElement } from 'react'
+import { FC, memo, ReactElement } from 'react'
 
 import classes from './styles.module.scss'
 
@@ -22,4 +22,4 @@ const BaseNotifyContainer: FC<Props> = ({ className, options }) => {
   )
 }
 
-export default BaseNotifyContainer
+export default memo(BaseNotifyContainer)

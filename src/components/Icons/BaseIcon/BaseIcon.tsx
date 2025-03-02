@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 type Props = {
   source: string
@@ -10,4 +10,4 @@ const BaseIcon: FC<Props> = ({ source, alt = 'icon', className }) => {
   return <img src={source} alt={alt} className={className} />
 }
 
-export default BaseIcon
+export default memo(BaseIcon)

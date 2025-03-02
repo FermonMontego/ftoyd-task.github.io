@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { FC, PropsWithChildren } from 'react'
+import { FC, memo, PropsWithChildren } from 'react'
 
 import classes from './styles.module.scss'
 
@@ -29,4 +29,4 @@ const BaseContainer: FC<Props> = ({
   )
 }
 
-export default BaseContainer
+export default memo(BaseContainer)

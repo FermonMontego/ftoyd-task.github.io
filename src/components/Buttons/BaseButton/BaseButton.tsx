@@ -3,9 +3,11 @@ import {
   CSSProperties,
   FC,
   Fragment,
+  memo,
   PropsWithChildren,
   ReactElement,
   useCallback,
+  useEffect,
 } from 'react'
 
 import RefreshIcon from '../../../assets/icons/refresh.svg'
@@ -75,4 +77,4 @@ const BaseButton: FC<Props> = ({
   )
 }
 
-export default BaseButton
+export default memo(BaseButton)

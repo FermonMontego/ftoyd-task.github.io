@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react'
+import { FC, memo, ReactElement, useEffect } from 'react'
 import CommandLogotype from '../../CommandLogotype/CommandLogotype'
 import clsx from 'clsx'
 
@@ -26,16 +26,16 @@ const CommandListElement: FC<Props> = ({
 }) => {
   return (
     <div className={clsx(styles['command-list-element'])}>
-      <CommandLogotype logotype={logotype} nameCommand={awayTeam.name} />
+      <CommandLogotype logotype={logotype} nameCommand={awayTeam?.name} />
       <div className={styles['command-list-element__wrapper-score']}>
         <p>
           {awayScore} {':'} {homeScore}
         </p>
         <BaseCardStatus status={statusMatch} />
       </div>
-      <CommandLogotype logotype={logotype} nameCommand={homeTeam.name} />
+      <CommandLogotype logotype={logotype} nameCommand={homeTeam?.name} />
     </div>
   )
 }
 
-export default CommandListElement
+export default memo(CommandListElement)
