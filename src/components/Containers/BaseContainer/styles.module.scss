@@ -4,6 +4,10 @@
   margin: 0 auto;
 
   padding: 53px 42px;
+
+  @media (max-width: 510px) {
+    padding: 24px 32px;
+  }
 }
 
 .base-container-1440 {

@@ -25,4 +25,8 @@
     background-color: var(--button-color-disabled);
     cursor: default;
   }
+
+  @media (max-width: 510px) {
+    max-width: 100%;
+  }
 }

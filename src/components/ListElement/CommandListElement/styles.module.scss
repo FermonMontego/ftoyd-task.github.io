@@ -8,6 +8,11 @@
   background-color: var(--secondary-dark-color);
   border-radius: var(--border-radius-default);
 
+  @media (max-width: 510px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+
   &__wrapper-score {
     display: flex;
     align-items: center;
