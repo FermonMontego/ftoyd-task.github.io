@@ -18,29 +18,32 @@ function App() {
 
   const loadData = useCallback(async () => {
     setIsLoadindData(true)
-    return (await fetcher('GET', '/fronttemp'))
-      .json()
+    return (
+      await fetcher('GET', '/fronttemp')
+        .catch(() => setLoadingHasBeenError(true))
+        .finally(() => setIsLoadindData(false))
+    )
+      ?.json()
       .then((res) => {
-        setIsLoadindData(false)
         setLoadingHasBeenError(false)
 
         return res
       })
-      .finally(() => setIsLoadindData(false))
+      .finally(() => {
+        setIsLoadindData(false)
+      })
   }, [])
 
   useEffect(() => {
-    loadData()
-      .then((res) => setData(res.data.matches))
-      .catch(() => setLoadingHasBeenError(true))
+    loadData().then((res) => {
+      if (res?.data) setData(res.data.matches)
+    })
   }, [])
 
   const refreshMatchesHandler = useCallback(() => {
-    loadData()
-      .then((res) => {
-        setData(res.data.matches)
-      })
-      .catch(() => setLoadingHasBeenError(true))
+    loadData().then((res) => {
+      if (res?.data) setData(res.data.matches)
+    })
   }, [])
 
   const dataMemoization = useMemo(() => {
