@@ -1,4 +1,4 @@
-import { FC, memo, ReactElement, useEffect } from 'react'
+import { FC, memo, ReactElement } from 'react'
 import CommandLogotype from '../../CommandLogotype/CommandLogotype'
 import clsx from 'clsx'
 

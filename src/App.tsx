@@ -16,8 +16,6 @@ function App() {
   const [isLoadingData, setIsLoadindData] = useState<boolean>(false)
   const [loadingHasBeenError, setLoadingHasBeenError] = useState(false)
 
-  const [state, setState] = useState({ name: 1 })
-
   const loadData = useCallback(async () => {
     setIsLoadindData(true)
     return (await fetcher('GET', '/fronttemp'))

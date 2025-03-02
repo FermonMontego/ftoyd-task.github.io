@@ -7,7 +7,6 @@ import {
   PropsWithChildren,
   ReactElement,
   useCallback,
-  useEffect,
 } from 'react'
 
 import RefreshIcon from '../../../assets/icons/refresh.svg'
