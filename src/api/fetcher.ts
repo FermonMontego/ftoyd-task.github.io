@@ -1,4 +1,4 @@
-const BASE_URL = 'https://ftoyd.com/fronttemp-service'
+import { BASE_URL } from './constants/uri'
 
 const fetcher = async (
   METHOD: 'GET' | 'POST',

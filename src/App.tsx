@@ -1,6 +1,3 @@
-import BaseButton, {
-  ButtonIconType,
-} from './components/Buttons/BaseButton/BaseButton'
 import RefreshIcon from './assets/icons/refresh.svg'
 import ErrorIcon from './assets/icons/alert-triangle.svg'
 import BaseIcon from './components/Icons/BaseIcon/BaseIcon'
@@ -10,47 +7,23 @@ import BaseContainer, {
 } from './components/Containers/BaseContainer/BaseContainer'
 import BaseNotifyContainer from './components/NotifyContainers/BaseNotifyContainer/BaseNotifyContainer'
 import CommandListElement from './components/ListElement/CommandListElement/CommandListElement'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { fetcher } from './api/fetcher'
+import { useEffect, useMemo } from 'react'
+import { useMatches } from './hooks/useMatches'
+import BaseButton from './components/Buttons/BaseButton/BaseButton'
 
 function App() {
-  const [data, setData] = useState<any[]>()
-  const [isLoadingData, setIsLoadindData] = useState<boolean>(false)
-  const [loadingHasBeenError, setLoadingHasBeenError] = useState(false)
-
-  const loadData = useCallback(async () => {
-    setIsLoadindData(true)
-    return (
-      await fetcher('GET', '/fronttemp')
-        .catch(() => setLoadingHasBeenError(true))
-        .finally(() => setIsLoadindData(false))
-    )
-      ?.json()
-      .then((res) => {
-        setLoadingHasBeenError(false)
-
-        return res
-      })
-      .finally(() => {
-        setIsLoadindData(false)
-      })
-  }, [])
+  const { matches, loadMatches, refresh, hasError, isLoading } = useMatches()
 
   useEffect(() => {
-    loadData().then((res) => {
-      if (res?.data) setData(res.data.matches)
-    })
-  }, [])
-
-  const refreshMatchesHandler = useCallback(() => {
-    loadData().then((res) => {
-      if (res?.data) setData(res.data.matches)
-    })
+    loadMatches()
   }, [])
 
   const dataMemoization = useMemo(() => {
-    return (data && data.map((match, index) => ({ ...match, id: index }))) || []
-  }, [data])
+    return (
+      (matches && matches.map((match, index) => ({ ...match, id: index }))) ||
+      []
+    )
+  }, [matches])
 
   // Добавил мемоизацию таким образом, чтобы map каждый раз не прогонял этот список если ничего не менялось
   const memoizationMatchesList = useMemo(() => {
@@ -74,7 +47,7 @@ function App() {
           <h1 className="section-matches__title">Match tracker</h1>
 
           <div className="section-matches__actions">
-            {loadingHasBeenError && (
+            {hasError && (
               <BaseNotifyContainer
                 options={{
                   content: 'Ошибка: не удалось загрузить информацию',
@@ -83,15 +56,15 @@ function App() {
               />
             )}
             <BaseButton
-              onClick={refreshMatchesHandler}
-              disabled={isLoadingData}
+              onClick={refresh}
+              disabled={isLoading}
               icons={[
                 {
                   source: <BaseIcon source={RefreshIcon} />,
                   position: 'right',
                 },
               ]}
-              isLoading={isLoadingData}
+              isLoading={isLoading}
               loaderIcon={
                 <BaseIcon source={RefreshIcon} className="animation-spin" />
               }
@@ -101,9 +74,9 @@ function App() {
           </div>
         </div>
         <div className="matches-list">
-          {!isLoadingData && memoizationMatchesList}
+          {!isLoading && memoizationMatchesList}
 
-          {isLoadingData && (
+          {isLoading && (
             <p className="matches-list__loading-data">Загрузка данных...</p>
           )}
         </div>
