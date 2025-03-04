@@ -7,6 +7,8 @@ import BaseCardStatus, {
   MatchStatusesType,
 } from '../../CardStatus/BaseCardStatus/BaseCardStatus'
 
+import AnimationNumber from '../../Animation/AnimationNumber/AnimationNumber'
+
 type Props = {
   awayTeam?: any
   homeTeam?: any
@@ -29,7 +31,9 @@ const CommandListElement: FC<Props> = ({
       <CommandLogotype logotype={logotype} nameCommand={awayTeam?.name} />
       <div className={styles['command-list-element__wrapper-score']}>
         <p>
-          {awayScore} {':'} {homeScore}
+          <AnimationNumber number={awayScore} />
+          {':'}
+          <AnimationNumber number={homeScore} />
         </p>
         <BaseCardStatus status={statusMatch} />
       </div>

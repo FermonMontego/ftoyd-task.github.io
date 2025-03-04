@@ -1,3 +1,6 @@
-import { BASE_URL_WS } from '../constants/uri'
+import { BASE_URL_WSS } from '../constants/uri'
 
-const socket = new WebSocket(BASE_URL_WS + '/fronttemp')
+export const onSocketCreate = () => {
+  const socket = new WebSocket(BASE_URL_WSS)
+  return socket
+}
