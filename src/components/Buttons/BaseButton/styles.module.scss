@@ -17,6 +17,12 @@
 
   cursor: pointer;
 
+  transition: 0.16s all ease-in-out;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
   &:active {
     background-color: var(--button-color-pressed);
   }

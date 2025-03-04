@@ -7,16 +7,19 @@ import {
   PropsWithChildren,
   ReactElement,
   useCallback,
+  useMemo,
 } from 'react'
 
 import RefreshIcon from '../../../assets/icons/refresh.svg'
 
 import classes from './styles.module.scss'
 import BaseIcon from '../../Icons/BaseIcon/BaseIcon'
+import { v4 as uuidGenerate } from 'uuid'
 
-type ButtonIconType = {
+export type ButtonIconType = {
   source: ReactElement
   position: 'left' | 'right'
+  _id?: string
 }
 
 type Props = {
@@ -41,6 +44,17 @@ const BaseButton: FC<Props> = ({
   isLoading,
   loaderIcon = <BaseIcon source={RefreshIcon} />,
 }) => {
+  const prepareIcons = useMemo(() => {
+    return (
+      (icons &&
+        icons.map((icon) => ({
+          ...icon,
+          _id: uuidGenerate(),
+        }))) ||
+      []
+    )
+  }, [])
+
   const renderIcons = useCallback(
     (
       icons: ButtonIconType[],
@@ -48,11 +62,7 @@ const BaseButton: FC<Props> = ({
     ): ReactElement[] => {
       return icons
         .filter((icon) => icon.position === positionRender)
-        .map((icon) => (
-          <Fragment key={icon.position + `_${Math.random() * 1000}`}>
-            {icon.source}
-          </Fragment>
-        ))
+        .map((icon) => <Fragment key={icon._id}>{icon.source}</Fragment>)
     },
     []
   )
@@ -67,7 +77,9 @@ const BaseButton: FC<Props> = ({
     >
       {!isLoading && (
         <>
-          {children} {icons && renderIcons(icons, 'right')}
+          {prepareIcons.length && renderIcons(prepareIcons, 'left')}
+          {children}
+          {prepareIcons.length && renderIcons(prepareIcons, 'right')}
         </>
       )}
 

@@ -1,4 +1,6 @@
-import BaseButton from './components/Buttons/BaseButton/BaseButton'
+import BaseButton, {
+  ButtonIconType,
+} from './components/Buttons/BaseButton/BaseButton'
 import RefreshIcon from './assets/icons/refresh.svg'
 import ErrorIcon from './assets/icons/alert-triangle.svg'
 import BaseIcon from './components/Icons/BaseIcon/BaseIcon'
