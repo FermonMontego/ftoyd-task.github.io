@@ -13,13 +13,13 @@
     gap: 12px;
   }
 
-  &__wrapper-score {
+  &__wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 4px;
 
-    p {
+    &__score {
       font-size: 20px;
       font-weight: 600;
       color: var(--default-white-color);
@@ -27,6 +27,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 4px;
+      overflow: hidden;
     }
   }
 }

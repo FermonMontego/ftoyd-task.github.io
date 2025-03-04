@@ -1,0 +1,15 @@
+.animation-number {
+  animation: slide-number 0.6s ease-in-out forwards;
+  transition: transform 0.5s ease-in-out;
+}
+
+@keyframes slide-number {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}

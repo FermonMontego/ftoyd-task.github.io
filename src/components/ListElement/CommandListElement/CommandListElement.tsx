@@ -29,12 +29,12 @@ const CommandListElement: FC<Props> = ({
   return (
     <div className={clsx(styles['command-list-element'])}>
       <CommandLogotype logotype={logotype} nameCommand={awayTeam?.name} />
-      <div className={styles['command-list-element__wrapper-score']}>
-        <p>
+      <div className={styles['command-list-element__wrapper']}>
+        <div className={styles['command-list-element__wrapper__score']}>
           <AnimationNumber number={awayScore} />
           {':'}
           <AnimationNumber number={homeScore} />
-        </p>
+        </div>
         <BaseCardStatus status={statusMatch} />
       </div>
       <CommandLogotype logotype={logotype} nameCommand={homeTeam?.name} />
