@@ -1,7 +1,6 @@
 import RefreshIcon from './assets/icons/refresh.svg'
 import ErrorIcon from './assets/icons/alert-triangle.svg'
 import BaseIcon from './components/Icons/BaseIcon/BaseIcon'
-import CommandLogotype from './assets/icons/command-logo.svg'
 import BaseContainer, {
   ContainerSizes,
 } from './components/Containers/BaseContainer/BaseContainer'
@@ -29,7 +28,6 @@ function App() {
   const memoizationMatchesList = useMemo(() => {
     return dataMemoization.map((match) => (
       <CommandListElement
-        logotype={<BaseIcon source={CommandLogotype} />}
         statusMatch={match.status}
         awayTeam={match.awayTeam}
         homeTeam={match.homeTeam}

@@ -5,8 +5,15 @@
 
   padding: 53px 42px;
 
+  @media (max-width: 768px) {
+    padding: 32px 16px;
+    min-width: 710px;
+  }
+
   @media (max-width: 510px) {
-    padding: 24px 32px;
+    padding: 32px 16px;
+
+    min-width: 468px;
   }
 }
 

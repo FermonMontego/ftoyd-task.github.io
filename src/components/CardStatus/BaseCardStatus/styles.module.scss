@@ -19,4 +19,15 @@
   &__Finished {
     background-color: var(--status-card-finished-color);
   }
+
+  span {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  @media (max-width: 510px) {
+    min-width: 70px;
+  }
 }

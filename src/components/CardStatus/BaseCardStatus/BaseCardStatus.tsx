@@ -27,7 +27,7 @@ const BaseCardStatus: FC<Props> = ({ status = 'Scheduled' }) => {
         classes[`base-card-status__${status}`]
       )}
     >
-      {prepareStatuses(status)}
+      <span>{prepareStatuses(status)}</span>
     </div>
   )
 }

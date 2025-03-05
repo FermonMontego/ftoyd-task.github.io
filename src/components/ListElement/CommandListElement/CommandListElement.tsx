@@ -7,12 +7,16 @@ import BaseCardStatus, {
   MatchStatusesType,
 } from '../../CardStatus/BaseCardStatus/BaseCardStatus'
 
+import ChevronUp from '../../../assets/icons/chevron-up.svg'
+
 import AnimationNumber from '../../Animation/AnimationNumber/AnimationNumber'
+import BaseIcon from '../../Icons/BaseIcon/BaseIcon'
+
+import CommandLogotypeIcon from '../../../assets/icons/command-logo.svg'
 
 type Props = {
   awayTeam?: any
   homeTeam?: any
-  logotype: ReactElement
   statusMatch?: MatchStatusesType
   homeScore?: number
   awayScore?: number
@@ -21,23 +25,37 @@ type Props = {
 const CommandListElement: FC<Props> = ({
   awayTeam,
   homeTeam,
-  logotype,
   statusMatch,
   homeScore,
   awayScore,
 }) => {
   return (
     <div className={clsx(styles['command-list-element'])}>
-      <CommandLogotype logotype={logotype} nameCommand={awayTeam?.name} />
-      <div className={styles['command-list-element__wrapper']}>
-        <div className={styles['command-list-element__wrapper__score']}>
-          <AnimationNumber number={awayScore} />
-          {':'}
-          <AnimationNumber number={homeScore} />
+      <div className={styles['command-list-element__wrapper-dropdown']}>
+        <div className={styles['command-list-element__wrapper-statistic']}>
+          <CommandLogotype
+            logotype={CommandLogotypeIcon}
+            nameCommand={awayTeam?.name}
+          />
+          <div className={styles['command-list-element__wrapper']}>
+            <div className={styles['command-list-element__score']}>
+              <AnimationNumber number={awayScore} />
+              {':'}
+              <AnimationNumber number={homeScore} />
+            </div>
+            <BaseCardStatus status={statusMatch} />
+          </div>
+          <CommandLogotype
+            logotype={CommandLogotypeIcon}
+            nameCommand={homeTeam?.name}
+          />
         </div>
-        <BaseCardStatus status={statusMatch} />
+        <BaseIcon
+          source={ChevronUp}
+          alt="chevron"
+          className={styles['command-list-element__icon-chevron']}
+        />
       </div>
-      <CommandLogotype logotype={logotype} nameCommand={homeTeam?.name} />
     </div>
   )
 }

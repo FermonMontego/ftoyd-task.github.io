@@ -59,6 +59,10 @@ h1 {
     font-size: 32px;
     text-align: center;
   }
+
+  @media (max-width: 510px) {
+    gap: 8px;
+  }
 }
 
 .animation-spin {

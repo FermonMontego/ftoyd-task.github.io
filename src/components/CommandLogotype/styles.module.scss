@@ -7,5 +7,19 @@
     color: #fff;
     font-size: 16px;
     font-weight: 600;
+
+    @media (max-width: 510px) {
+      font-size: 14px;
+    }
+  }
+
+  &__img {
+    @media (max-width: 510px) {
+      max-width: 28px;
+    }
+  }
+
+  @media (max-width: 510px) {
+    gap: 6px;
   }
 }
