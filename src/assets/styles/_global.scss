@@ -6,6 +6,16 @@ body {
   background: var(--primary-dark-color);
 }
 
+html {
+  @media (max-width: 768px) {
+    min-width: 710px;
+  }
+
+  @media (max-width: 510px) {
+    min-width: 468px;
+  }
+}
+
 h1 {
   font-family: 'TacticSans', sans-serif;
   color: #fff;
