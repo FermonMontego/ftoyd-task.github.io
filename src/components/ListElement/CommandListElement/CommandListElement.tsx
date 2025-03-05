@@ -13,6 +13,7 @@ import AnimationNumber from '../../Animation/AnimationNumber/AnimationNumber'
 import BaseIcon from '../../Icons/BaseIcon/BaseIcon'
 
 import CommandLogotypeIcon from '../../../assets/icons/command-logo.svg'
+import CommandComposition from '../../CommandComposition/CommandComposition'
 
 type Props = {
   awayTeam?: any
@@ -55,6 +56,13 @@ const CommandListElement: FC<Props> = ({
           alt="chevron"
           className={styles['command-list-element__icon-chevron']}
         />
+      </div>
+
+      <div
+        className={clsx(styles['command-list-element__wrapper-command-stat'])}
+      >
+        <CommandComposition commandData={awayTeam} />
+        <CommandComposition commandData={homeTeam} />
       </div>
     </div>
   )

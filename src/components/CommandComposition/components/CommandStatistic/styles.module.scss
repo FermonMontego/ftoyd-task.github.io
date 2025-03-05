@@ -1,0 +1,36 @@
+.command-statistic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+
+  background-color: var(--third-dark-color);
+  border-radius: var(--border-radius-default);
+
+  width: 100%;
+
+  &__label-stats {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dirty-white-color);
+
+    width: 100%;
+
+    text-align: center;
+
+    span {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--default-white-color);
+
+      @media (max-width: 510px) {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 510px) {
+      font-size: 12px;
+    }
+  }
+}

@@ -8,6 +8,8 @@
   background-color: var(--secondary-dark-color);
   border-radius: var(--border-radius-default);
 
+  gap: 32px;
+
   @media (max-width: 510px) {
     flex-direction: column;
     gap: 12px;
@@ -50,14 +52,21 @@
       gap: 12px;
     }
   }
-
   &__wrapper-statistic {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__wrapper-command-stat {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 
     gap: 25px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
   }
 
   &__icon-chevron {

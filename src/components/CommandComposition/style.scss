@@ -1,0 +1,19 @@
+.command-composition-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+
+  &__command {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+    width: 100%;
+
+    @media (max-width: 1600px) {
+      //   grid-template-columns: 1fr;
+    }
+  }
+}

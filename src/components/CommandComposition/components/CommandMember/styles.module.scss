@@ -1,0 +1,43 @@
+.command-member {
+  width: 100%;
+
+  background-color: var(--third-dark-color);
+  border-radius: var(--border-radius-default);
+
+  padding: 8px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 1600px) {
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  &__label-stat {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dirty-white-color);
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    span {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--default-white-color);
+
+      @media (max-width: 510px) {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 510px) {
+      font-size: 12px;
+    }
+  }
+}
