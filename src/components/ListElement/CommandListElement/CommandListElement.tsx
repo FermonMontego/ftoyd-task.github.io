@@ -65,6 +65,7 @@ const CommandListElement: FC<Props> = ({
           <CommandLogotype
             logotype={CommandLogotypeIcon}
             nameCommand={homeTeam?.name}
+            position="right"
           />
         </div>
         <span className={clsx(styles['command-list-element__desktop'])}>
