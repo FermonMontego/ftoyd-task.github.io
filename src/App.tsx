@@ -6,12 +6,17 @@ import BaseContainer, {
 } from './components/Containers/BaseContainer/BaseContainer'
 import BaseNotifyContainer from './components/NotifyContainers/BaseNotifyContainer/BaseNotifyContainer'
 import CommandListElement from './components/ListElement/CommandListElement/CommandListElement'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useMatches } from './hooks/useMatches'
 import BaseButton from './components/Buttons/BaseButton/BaseButton'
+import Select from './components/Select/CustomSelect/Select'
 
 function App() {
   const { matches, loadMatches, refresh, hasError, isLoading } = useMatches()
+
+  const [filter, setFilter] = useState({
+    status: 'all',
+  })
 
   useEffect(() => {
     loadMatches()
@@ -19,10 +24,15 @@ function App() {
 
   const dataMemoization = useMemo(() => {
     return (
-      (matches && matches.map((match, index) => ({ ...match, id: index }))) ||
+      (matches &&
+        matches
+          .filter(
+            (match) => match.status === filter.status || filter.status === 'all'
+          )
+          .map((match, index) => ({ ...match, id: index }))) ||
       []
     )
-  }, [matches])
+  }, [matches, filter])
 
   // Добавил мемоизацию таким образом, чтобы map каждый раз не прогонял этот список если ничего не менялось
   const memoizationMatchesList = useMemo(() => {
@@ -43,6 +53,21 @@ function App() {
       <BaseContainer size={ContainerSizes.EXTRA_LARGE}>
         <div className="section-matches__header">
           <h1 className="section-matches__title">Match tracker</h1>
+
+          <Select
+            options={[
+              { value: 'all', label: 'Все статусы' },
+              { value: 'Ongoing', label: 'Live' },
+              { value: 'Finished', label: 'Finished' },
+              { value: 'Scheduled', label: 'Match preparing' },
+            ]}
+            onChange={(value) =>
+              setFilter((prev) => ({
+                ...prev,
+                status: value.value,
+              }))
+            }
+          />
 
           <div className="section-matches__actions">
             {hasError && (

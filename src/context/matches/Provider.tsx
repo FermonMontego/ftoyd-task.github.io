@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import Context, { MatchesContextType } from './Context'
+import Context from './Context'
 import { fetcher } from '../../api/fetcher'
 import { onSocketCreate } from '../../api/websocket/ws'
 

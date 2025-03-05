@@ -11,7 +11,6 @@ type Props = {
 }
 
 const CommandMember: FC<Props> = ({ member }) => {
-  console.log(member, 'commandData')
   return (
     <div className={classes['command-member']}>
       <CommandLogotype logotype={AvatarIcon} nameCommand={member.username} />

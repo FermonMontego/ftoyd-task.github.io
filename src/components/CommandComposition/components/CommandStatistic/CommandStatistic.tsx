@@ -8,7 +8,6 @@ type Props = {
 }
 
 const CommandStatistic: FC<Props> = ({ commandData }) => {
-  console.log(commandData, 'commandData')
   return (
     <div className={clsx(classes['command-statistic'])}>
       <div className={clsx(classes['command-statistic__label-stats'])}>

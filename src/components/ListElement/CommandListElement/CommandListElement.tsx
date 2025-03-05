@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react'
+import { FC, memo, useCallback, useState } from 'react'
 import CommandLogotype from '../../CommandLogotype/CommandLogotype'
 import clsx from 'clsx'
 
@@ -32,6 +32,20 @@ const CommandListElement: FC<Props> = ({
 }) => {
   const [showCommandStat, setShowCommandStat] = useState<boolean>(false)
 
+  const renderDropdownElement = useCallback(() => {
+    return (
+      <BaseIcon
+        onClick={() => setShowCommandStat((prev) => !prev)}
+        source={ChevronUp}
+        alt="chevron"
+        className={clsx(styles['command-list-element__icon-chevron'], {
+          [styles['command-list-element__icon-chevron__active']]:
+            showCommandStat,
+        })}
+      />
+    )
+  }, [showCommandStat])
+
   return (
     <div className={clsx(styles['command-list-element'])}>
       <div className={styles['command-list-element__wrapper-dropdown']}>
@@ -53,15 +67,9 @@ const CommandListElement: FC<Props> = ({
             nameCommand={homeTeam?.name}
           />
         </div>
-        <BaseIcon
-          onClick={() => setShowCommandStat((prev) => !prev)}
-          source={ChevronUp}
-          alt="chevron"
-          className={clsx(styles['command-list-element__icon-chevron'], {
-            [styles['command-list-element__icon-chevron__active']]:
-              showCommandStat,
-          })}
-        />
+        <span className={clsx(styles['command-list-element__desktop'])}>
+          {renderDropdownElement()}
+        </span>
       </div>
 
       {showCommandStat && (
@@ -79,6 +87,10 @@ const CommandListElement: FC<Props> = ({
           <CommandComposition commandData={homeTeam} />
         </div>
       )}
+
+      <span className={clsx(styles['command-list-element__mobile'])}>
+        {renderDropdownElement()}
+      </span>
     </div>
   )
 }

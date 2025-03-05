@@ -14,7 +14,7 @@ const CommandComposition: FC<Props> = ({ commandData }) => {
       <div className="command-composition-wrapper__command">
         {commandData?.players &&
           commandData.players.map((player: any) => (
-            <CommandMember member={player} />
+            <CommandMember member={player} key={`${player.username}`} />
           ))}
       </div>
       <div className="command-composition-wrapper__command-stat">
