@@ -52,22 +52,24 @@ function App() {
     <section className="section-matches">
       <BaseContainer size={ContainerSizes.EXTRA_LARGE}>
         <div className="section-matches__header">
-          <h1 className="section-matches__title">Match tracker</h1>
+          <div className="section-matches__title-with-filter">
+            <h1 className="section-matches__title">Match tracker</h1>
 
-          <Select
-            options={[
-              { value: 'all', label: 'Все статусы' },
-              { value: 'Ongoing', label: 'Live' },
-              { value: 'Finished', label: 'Finished' },
-              { value: 'Scheduled', label: 'Match preparing' },
-            ]}
-            onChange={(value) =>
-              setFilter((prev) => ({
-                ...prev,
-                status: value.value,
-              }))
-            }
-          />
+            <Select
+              options={[
+                { value: 'all', label: 'Все статусы' },
+                { value: 'Ongoing', label: 'Live' },
+                { value: 'Finished', label: 'Finished' },
+                { value: 'Scheduled', label: 'Match preparing' },
+              ]}
+              onChange={(value) =>
+                setFilter((prev) => ({
+                  ...prev,
+                  status: value.value,
+                }))
+              }
+            />
+          </div>
 
           <div className="section-matches__actions">
             {hasError && (

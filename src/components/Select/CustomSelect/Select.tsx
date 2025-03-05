@@ -24,6 +24,7 @@ const Select: FC<Props> = ({ value, onChange, options }) => {
         maxWidth: '100%',
         width: '100%',
         background: '#0B0E12',
+        borderRadius: 4,
       }),
       control: (base, props) => ({
         ...base,

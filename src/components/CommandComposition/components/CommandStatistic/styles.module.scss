@@ -19,6 +19,13 @@
 
     text-align: center;
 
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+
     span {
       font-size: 16px;
       font-weight: 600;

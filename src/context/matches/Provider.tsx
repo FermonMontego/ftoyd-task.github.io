@@ -34,6 +34,7 @@ const Provider: FC<Props> = ({ children }) => {
       const dataParsed = JSON.parse(data)
 
       if (dataParsed.type === 'update_matches') {
+        setHasError(false)
         setMatches(dataParsed.data)
       }
     }
@@ -47,9 +48,15 @@ const Provider: FC<Props> = ({ children }) => {
     setIsLoadind(true)
     fetcher('GET', '/fronttemp')
       .then((res) => {
+        setHasError(false)
         return res.json()
       })
+      .catch(() => {
+        setHasError(true)
+      })
+      .finally(() => setIsLoadind(false))
       .then((res) => {
+        setHasError(false)
         setMatches(res.data.matches)
       })
       .catch((err) => setHasError(true))
