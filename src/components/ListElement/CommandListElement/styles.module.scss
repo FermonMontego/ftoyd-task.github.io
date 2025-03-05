@@ -65,23 +65,12 @@
 
     gap: 25px;
 
-    @media (max-width: 991px) {
-      flex-direction: column;
-    }
-
     transition: all 0.25s ease-in-out;
 
     animation: smooth-appearance 0.5s ease-in-out forwards;
 
-    @keyframes smooth-appearance {
-      0% {
-        opacity: 0;
-        transform: translateY(-20%);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @media (max-width: 991px) {
+      flex-direction: column;
     }
   }
 
@@ -152,5 +141,16 @@
     @media (max-width: 768px) {
       display: block;
     }
+  }
+}
+
+@keyframes smooth-appearance {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
