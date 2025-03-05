@@ -1,4 +1,4 @@
-import { FC, memo, ReactElement } from 'react'
+import { FC, memo, useState } from 'react'
 import CommandLogotype from '../../CommandLogotype/CommandLogotype'
 import clsx from 'clsx'
 
@@ -30,6 +30,8 @@ const CommandListElement: FC<Props> = ({
   homeScore,
   awayScore,
 }) => {
+  const [showCommandStat, setShowCommandStat] = useState<boolean>(false)
+
   return (
     <div className={clsx(styles['command-list-element'])}>
       <div className={styles['command-list-element__wrapper-dropdown']}>
@@ -52,18 +54,31 @@ const CommandListElement: FC<Props> = ({
           />
         </div>
         <BaseIcon
+          onClick={() => setShowCommandStat((prev) => !prev)}
           source={ChevronUp}
           alt="chevron"
-          className={styles['command-list-element__icon-chevron']}
+          className={clsx(styles['command-list-element__icon-chevron'], {
+            [styles['command-list-element__icon-chevron__active']]:
+              showCommandStat,
+          })}
         />
       </div>
 
-      <div
-        className={clsx(styles['command-list-element__wrapper-command-stat'])}
-      >
-        <CommandComposition commandData={awayTeam} />
-        <CommandComposition commandData={homeTeam} />
-      </div>
+      {showCommandStat && (
+        <div
+          className={clsx(styles['command-list-element__wrapper-command-stat'])}
+        >
+          <CommandComposition commandData={awayTeam} />
+          <div className={clsx(styles['command-list-element__divider'])}>
+            <div
+              className={clsx(styles['command-list-element__divider__stamp'])}
+            >
+              VS
+            </div>
+          </div>
+          <CommandComposition commandData={homeTeam} />
+        </div>
+      )}
     </div>
   )
 }
