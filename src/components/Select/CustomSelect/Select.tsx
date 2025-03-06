@@ -46,6 +46,7 @@ const Select: FC<Props> = ({ value, onChange, options }) => {
           background: '#101318',
         },
         background: '#0B0E12',
+        fontSize: 16,
       }),
       menu(base, props) {
         return {
