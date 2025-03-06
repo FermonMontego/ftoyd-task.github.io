@@ -35,7 +35,7 @@ const Select: FC<Props> = ({ value, onChange, options }) => {
         color: '#B4B5B6',
         fontSize: 16,
         fontWeight: 500,
-        padding: 8,
+        padding: 12,
         ':focus': {
           boxShadow: '0px 0px 0px 6px rgba(11, 14, 18, .75)',
         },

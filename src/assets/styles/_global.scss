@@ -32,7 +32,8 @@ h1 {
     font-weight: 500;
     color: #fff;
 
-    width: 100%;
+    white-space: nowrap;
+    width: max-content;
 
     @media (max-width: 510px) {
       text-align: center;
@@ -54,11 +55,19 @@ h1 {
   &__title-with-filter {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 16px;
 
-    width: 50%;
+    width: 33.333%;
 
-    @media (max-width: 1640px) {
+    @media (max-width: 1700px) {
+      width: 50%;
+    }
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 1400px) {
       width: 100%;
     }
 

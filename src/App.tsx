@@ -72,7 +72,7 @@ function App() {
           </div>
 
           <div className="section-matches__actions">
-            {hasError && (
+            {hasError && window.innerWidth > 991 && (
               <BaseNotifyContainer
                 options={{
                   content: 'Ошибка: не удалось загрузить информацию',
@@ -98,7 +98,17 @@ function App() {
             </BaseButton>
           </div>
         </div>
+
         <div className="matches-list">
+          {hasError && window.innerWidth < 991 && (
+            <BaseNotifyContainer
+              options={{
+                content: 'Ошибка: не удалось загрузить информацию',
+                icon: <BaseIcon source={ErrorIcon} />,
+              }}
+            />
+          )}
+
           {!isLoading && memoizationMatchesList}
 
           {isLoading && (
