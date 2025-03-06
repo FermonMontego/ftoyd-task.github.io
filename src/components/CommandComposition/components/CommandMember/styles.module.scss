@@ -16,6 +16,10 @@
     padding: 8px;
   }
 
+  @media (max-width: 410px) {
+    flex-direction: row;
+  }
+
   &__label-stat {
     font-size: 14px;
     font-weight: 500;
